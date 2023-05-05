@@ -36,10 +36,10 @@ def languages_list(request):
     return render(request, 'languages.html', context)
 
 def get_country(request, name):
-    for country in countries:
-        if country == name:
+    for item in f_countries:
+        if item['country'] == name:
             context = {
-                'country': country
+                'item': item
             }
             return render(request, 'country_page.html', context)
     return HttpResponseNotFound(f"Страна с таким именем не найдена")
