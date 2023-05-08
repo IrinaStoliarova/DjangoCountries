@@ -2,11 +2,11 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Country {{item.country}}</title>
+    <title>Country {{country.name}}</title>
 </head>
 <body>
     {% include 'menu.html' %}
-    <h1>{{item.country}}</h1>
+    <h1>{{country.name}}</h1>
     Языки, на которых говорят в данной стране:
     <ul>
     {% for lang in item.languages %}

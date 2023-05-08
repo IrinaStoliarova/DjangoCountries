@@ -9,7 +9,7 @@
     <h2>Список стран</h2>
     <ol>
     {% for country in countries %}
-        <li><a href="/countries-list/{{country}}/">{{country}}</a></li>
+        <li><a href="/countries-list/{{country.id}}/">{{country.name}}</a></li>
     {% endfor %}
     </ol>
 </body>
