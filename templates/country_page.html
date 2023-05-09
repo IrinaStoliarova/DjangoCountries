@@ -9,8 +9,8 @@
     <h1>{{country.name}}</h1>
     Языки, на которых говорят в данной стране:
     <ul>
-    {% for lang in item.languages %}
-        <li>{{lang}}</li>
+    {% for lang in languages %}
+        <li>{{lang.name}}</li>
     {% endfor %}
     </ul>
     <br>

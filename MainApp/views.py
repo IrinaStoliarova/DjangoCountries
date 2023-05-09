@@ -1,6 +1,6 @@
 from django.shortcuts import render, HttpResponse
 from django.http import HttpResponseNotFound
-from MainApp.models import Country
+from MainApp.models import Country, Language
 from django.core.exceptions import ObjectDoesNotExist
 
 
@@ -19,7 +19,7 @@ def countries_list(request):
     return render(request, 'countries-list.html', context)
 
 def languages_list(request):
-    languages = ""
+    languages = Language.objects.all()
     context = {
         "languages": languages
     }
@@ -31,6 +31,7 @@ def get_country(request, id):
     except ObjectDoesNotExist:
         return HttpResponseNotFound("Страны с таким номером не существует")
     context = {
-                'country': country
+                "country": country,
+                "languages": country.language.all()
             }
     return render(request, 'country_page.html', context)

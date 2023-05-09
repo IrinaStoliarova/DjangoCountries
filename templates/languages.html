@@ -6,10 +6,10 @@
 </head>
 <body>
     {% include 'menu.html' %}
-    <h2>Список всех языков всех стран</h2>
+    <h2>Список всех языков всех стран:</h2>
     <ol>
     {% for language in languages %}
-        <li>{{language}}</li>
+        <li>{{language.name}}</li>
     {% endfor %}
     </ol>
 </body>
