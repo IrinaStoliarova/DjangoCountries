@@ -3,7 +3,7 @@
     <h2>Список всех языков всех стран:</h2>
     <ol>
     {% for language in languages %}
-        <li>{{language.name}}</li>
+        <li><a href="{% url 'language-detail' language.id %}">{{language.name}}</a></li>
     {% endfor %}
     </ol>
 {% endblock %}

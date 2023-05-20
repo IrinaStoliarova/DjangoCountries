@@ -31,7 +31,19 @@ def get_country(request, id):
     except ObjectDoesNotExist:
         return HttpResponseNotFound("Страны с таким номером не существует")
     context = {
-                "country": country,
-                "languages": country.language.all()
-            }
+        "country": country,
+        "languages": country.language.all()
+    }
     return render(request, 'country_page.html', context)
+
+def get_language(request, id):
+    try:
+        language = Language.objects.get(id=id)
+    except ObjectDoesNotExist:
+        return HttpResponseNotFound("Языка с таким номером не существует")
+    countries = Country.objects.filter(language__id=id)
+    context = {
+        "language": language,
+        "countries": countries
+    }
+    return render(request, 'language_page.html', context)
