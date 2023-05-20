@@ -1,16 +1,9 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <title>List of countries</title>
-</head>
-<body>
-    {% include 'menu.html' %}
+{% extends 'base.html' %}
+{% block content %}
     <h2>Список стран</h2>
     <ol>
     {% for country in countries %}
-        <li><a href="/countries-list/{{country.id}}/">{{country.name}}</a></li>
+        <li><a href="{% url 'country-detail' country.id %}">{{country.name}}</a></li>
     {% endfor %}
     </ol>
-</body>
-</html>
+{% endblock %}

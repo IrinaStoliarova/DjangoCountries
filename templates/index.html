@@ -1,13 +1,6 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <title>Home page</title>
-</head>
-<body>
-    {% include 'menu.html' %}
+{% extends 'base.html' %}
+{% block content %}
     <h2>Страны и языки</h2>
     <p>На этом сайте вы можете ознакомиться со списком стран и языков нашей планеты.</p>
     <strong>Автор:</strong> <i>{{name}} {{surname}}</i>
-</body>
-</html>
+{% endblock %}

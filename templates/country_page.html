@@ -1,11 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Country {{country.name}}</title>
-</head>
-<body>
-    {% include 'menu.html' %}
+{% extends 'base.html' %}
+{% block content %}
     <h1>{{country.name}}</h1>
     Языки, на которых говорят в данной стране:
     <ul>
@@ -14,5 +8,4 @@
     {% endfor %}
     </ul>
     <br>
-</body>
-</html>
+{% endblock %}
