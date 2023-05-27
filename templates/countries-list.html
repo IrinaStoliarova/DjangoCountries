@@ -1,14 +1,20 @@
 {% extends 'base.html' %}
 {% block content %}
+    Список стран по первой букве:
     <nav class="nav nav-pills nav-fill">
         {% for letter in letters %}
         <a href="{% url 'countries-byletter' letter %}">{{letter}}</a>
         {% endfor %}
     </nav>
-    <h2>Список стран</h2>
-    <ol>
-    {% for country in countries %}
-        <li><a href="{% url 'country-detail' country.id %}">{{country.name}}</a></li>
+    <h2>Общий список стран</h2>
+    {% for country in page_object %}
+        <a href="{% url 'country-detail' country.id %}">{{country.id}}. {{country.name}}</a><br>
     {% endfor %}
-    </ol>
+    <br>
+    Переход по страницам общего списка стран:
+    <nav class="nav nav-pills nav-fill">
+        {% for p in page_object.paginator.page_range %}
+            <a href="?page={{ p }}">{{ p }}</a>
+        {% endfor %}
+    </nav>
 {% endblock %}

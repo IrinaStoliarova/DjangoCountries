@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% block content %}
-    <h2>Список стран, начинающихс с буквы {{letter}} </h2>
+    <h2>Список стран, начинающихся с буквы {{letter}} </h2>
     <ol>
     {% for country in countries %}
         <li><a href="{% url 'country-detail' country.id %}">{{country.name}}</a></li>

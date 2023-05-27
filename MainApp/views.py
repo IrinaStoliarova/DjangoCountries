@@ -2,6 +2,7 @@ from django.shortcuts import render, HttpResponse
 from django.http import HttpResponseNotFound
 from MainApp.models import Country, Language
 from django.core.exceptions import ObjectDoesNotExist
+from django.core.paginator import Paginator
 import string
 
 LETTERS = list(string.ascii_uppercase)
@@ -16,9 +17,13 @@ def home(request):
 
 def countries_list(request):
     countries = Country.objects.all()
+    paginator = Paginator(countries, 10)
+    page_number = request.GET.get('page')
+    page_object = paginator.get_page(page_number)
     context = {
-        "countries": countries,
-        "letters": LETTERS
+        "letters": LETTERS,
+        "paginator": paginator,
+        "page_object": page_object
     }
     return render(request, 'countries-list.html', context)
 
