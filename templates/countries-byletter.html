@@ -1,11 +1,6 @@
 {% extends 'base.html' %}
 {% block content %}
-    <nav class="nav nav-pills nav-fill">
-        {% for letter in letters %}
-        <a href="{% url 'countries-byletter' letter %}">{{letter}}</a>
-        {% endfor %}
-    </nav>
-    <h2>Список стран</h2>
+    <h2>Список стран, начинающихс с буквы {{letter}} </h2>
     <ol>
     {% for country in countries %}
         <li><a href="{% url 'country-detail' country.id %}">{{country.name}}</a></li>

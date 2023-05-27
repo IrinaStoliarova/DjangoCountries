@@ -2,7 +2,9 @@ from django.shortcuts import render, HttpResponse
 from django.http import HttpResponseNotFound
 from MainApp.models import Country, Language
 from django.core.exceptions import ObjectDoesNotExist
+import string
 
+LETTERS = list(string.ascii_uppercase)
 
 def home(request):
     context = {
@@ -11,12 +13,15 @@ def home(request):
     }
     return render(request, 'index.html', context)
 
+
 def countries_list(request):
     countries = Country.objects.all()
     context = {
-        "countries": countries
+        "countries": countries,
+        "letters": LETTERS
     }
     return render(request, 'countries-list.html', context)
+
 
 def languages_list(request):
     languages = Language.objects.all()
@@ -24,6 +29,7 @@ def languages_list(request):
         "languages": languages
     }
     return render(request, 'languages.html', context)
+
 
 def get_country(request, id):
     try:
@@ -36,6 +42,7 @@ def get_country(request, id):
     }
     return render(request, 'country_page.html', context)
 
+
 def get_language(request, id):
     try:
         language = Language.objects.get(id=id)
@@ -47,3 +54,12 @@ def get_language(request, id):
         "countries": countries
     }
     return render(request, 'language_page.html', context)
+
+
+def countries_by_letter(request, letter):
+    countries_by_let = Country.objects.filter(name__startswith=letter)
+    context = {
+        "countries": countries_by_let,
+        "letter": letter
+    }
+    return render(request, 'countries-byletter.html', context)
